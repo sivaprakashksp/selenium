@@ -44,6 +44,13 @@ public class LoginTest {
         Assert.assertTrue(successMsg.contains("You logged into a secure area!"), "Login success message not found!");
     }
 
+    @Test // Invalid Login Test
+    public void invalidLoginTest() {
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("username"))).sendKeys("invalidUser");
+        driver.findElement(By.id("password")).sendKeys("invalidPass");
+        driver.findElement(By.cssSelector(".radius")).click();
+    }
+
     @AfterMethod
     public void tearDown() {
         driver.quit();
